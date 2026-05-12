@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech.Care Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <div class="navbar">
+    <div class="logo">Tech.Care</div>
+    <ul class="nav-links">
+      <li><a href="#">Overview</a></li>
+      <li class="active"><a href="#">Patients</a></li>
+      <li><a href="#">Schedule</a></li>
+      <li><a href="#">Message</a></li>
+      <li><a href="#">Transactions</a></li>
+    </ul>
+    <div class="nav-right">
+      <img src="https://i.pravatar.cc/40?img=12" alt="Doctor">
+      <div>
+        <p style="font-weight:600">Dr. Jose Simmons</p>
+        <p style="color:#888;font-size:12px">General Practitioner</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+  <h4>Patients <span>🔍</span></h4>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=1" alt=""><div><p class="name">Emily Williams</p><p class="sub">Female, 18</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=3" alt=""><div><p class="name">Ryan Johnson</p><p class="sub">Male, 45</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=4" alt=""><div><p class="name">Brandon Mitchell</p><p class="sub">Male, 36</p></div></div>
+  <div class="patient active"><img src="https://i.pravatar.cc/40?img=5" alt=""><div><p class="name">Jessica Taylor</p><p class="sub">Female, 28</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=6" alt=""><div><p class="name">Samantha Johnson</p><p class="sub">Female, 56</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=7" alt=""><div><p class="name">Ashley Martinez</p><p class="sub">Female, 54</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=8" alt=""><div><p class="name">Olivia Brown</p><p class="sub">Female, 32</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=9" alt=""><div><p class="name">Tyler Davis</p><p class="sub">Male, 19</p></div></div>
+  <div class="patient"><img src="https://i.pravatar.cc/40?img=10" alt=""><div><p class="name">Kevin Anderson</p><p class="sub">Male, 51</p></div></div>
+</div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <h2>Diagnosis History</h2>
+
+      <!-- CHART -->
+      <div class="chart-box">
+  <div class="chart-header">
+    <h3>Blood Pressure</h3>
+    <span style="font-size:13px;color:#888">Last 6 months ▾</span>
+  </div>
+  <div class="chart-content">
+    <canvas id="bpChart"></canvas>
+    <div class="bp-values">
+      <div class="bp-item">
+        <span class="dot pink"></span>
+        <p class="bp-label">Systolic</p>
+        <p class="bp-number" id="systolic-val"></p>
+        <p class="bp-status">▲ Higher than Average</p>
+      </div>
+      <div class="bp-item">
+        <span class="dot purple"></span>
+        <p class="bp-label">Diastolic</p>
+        <p class="bp-number" id="diastolic-val"></p>
+        <p class="bp-status">▼ Lower than Average</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- STAT CARDS -->
+      <div class="stats">
+        <div class="card">
+          <div class="icon">🫁</div>
+          <p class="label">Respiratory Rate</p>
+          <p class="value" id="resp"></p>
+          <p class="status">Normal</p>
+        </div>
+        <div class="card">
+          <div class="icon">🌡️</div>
+          <p class="label">Temperature</p>
+          <p class="value" id="temp"></p>
+          <p class="status">Normal</p>
+        </div>
+        <div class="card">
+          <div class="icon">❤️</div>
+          <p class="label">Heart Rate</p>
+          <p class="value" id="heart"></p>
+          <p class="status">Lower than Average</p>
+        </div>
+      </div>
+     <div class="bottom-section">
+  <div class="diagnostic-list">
+    <h2>Diagnostic List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Problem/Diagnosis</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="diagnostic-body"></tbody>
+    </table>
+  </div>
+  <div class="lab-results">
+    <h2>Lab Results</h2>
+    <ul>
+      <li>Blood Tests <span>⬇️</span></li>
+      <li>CT Scans <span>⬇️</span></li>
+      <li>Radiology Reports <span>⬇️</span></li>
+      <li>X-Rays <span>⬇️</span></li>
+      <li>Urine Test <span>⬇️</span></li>
+    </ul>
+  </div>
+</div>
+    </div>
+
+    <!-- RIGHT PROFILE CARD -->
+    <div class="profile">
+      <img class="avatar" src="https://i.pravatar.cc/100?img=5" alt="Jessica">
+      <h3 id="p-name"></h3>
+      <div class="profile-info">
+        <div class="info-item">
+          <span class="icon">📅</span>
+          <div class="detail">
+            <label>Date Of Birth</label>
+            <span id="p-dob"></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">⚧</span>
+          <div class="detail">
+            <label>Gender</label>
+            <span id="p-gender"></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">📞</span>
+          <div class="detail">
+            <label>Contact Info</label>
+            <span id="p-phone"></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">🏥</span>
+          <div class="detail">
+            <label>Insurance Provider</label>
+            <span id="p-insurance"></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">📞</span>
+          <div class="detail">
+            <label>Emergency Contacts</label>
+            <span id="p-emergency"></span>
+        </div>
+        </div>
+      </div>
+      <button>Show All Information</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
